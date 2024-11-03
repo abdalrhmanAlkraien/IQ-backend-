@@ -5,7 +5,7 @@
 
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.iqvia-parent</groupId>
+    <groupId>com.iqvia</groupId>
     <artifactId>iqvia-bom</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
@@ -43,6 +43,7 @@
                <artifactId>iqvia-common-lib</artifactId>
                <version>${revision}</version>
            </dependency>
+
        </dependencies>
     </dependencyManagement>
     <build></build>

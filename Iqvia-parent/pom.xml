@@ -62,7 +62,7 @@
             <dependency>
                 <groupId>com.iqvia</groupId>
                 <artifactId>iqvia-bom</artifactId>
-                <version>${revision}</version>
+                <version>0.0.1-SNAPSHOT</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -99,8 +99,8 @@
     </repositories>
 
     <build>
-        <plugins>
 
+        <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
