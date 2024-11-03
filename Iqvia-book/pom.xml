@@ -1,39 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.iqvia</groupId>
-		<artifactId>iqvia-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/>
-	</parent>
+    <parent>
+        <groupId>com.iqvia</groupId>
+        <artifactId>iqvia-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
 
-	<!--	<parent>-->
-	<!--		<groupId>org.springframework.boot</groupId>-->
-	<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
-	<!--		<version>3.3.5</version>-->
-	<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
-	<!--	</parent>-->
+    <!--	<parent>-->
+    <!--		<groupId>org.springframework.boot</groupId>-->
+    <!--		<artifactId>spring-boot-starter-parent</artifactId>-->
+    <!--		<version>3.3.5</version>-->
+    <!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+    <!--	</parent>-->
 
-	<groupId>com.iqvia</groupId>
-	<artifactId>iqvia-book-microservice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>BookMicroservice</name>
-	<description>Book Microservice</description>
+    <groupId>com.iqvia</groupId>
+    <artifactId>iqvia-book-microservice</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>BookMicroservice</name>
+    <description>Book Microservice</description>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.iqvia</groupId>
-			<artifactId>iqvia-common-lib</artifactId>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>com.iqvia</groupId>
+            <artifactId>iqvia-common-lib</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime </scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>
