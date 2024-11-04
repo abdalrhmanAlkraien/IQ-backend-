@@ -47,7 +47,7 @@ public class BookController {
             @RequestBody @Valid final BookRequest bookRequest
     ) throws URISyntaxException {
 
-        log.info("call create new Author API");
+        log.info("call create new book API");
         bookService.createNewBook(bookRequest);
         return ResponseEntity.created(new URI(EndPoints.BOOK_PATH)).body("Book has been created");
     }

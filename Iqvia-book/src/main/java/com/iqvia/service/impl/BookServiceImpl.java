@@ -2,10 +2,12 @@ package com.iqvia.service.impl;
 
 import com.iqvia.dto.request.BookRequest;
 import com.iqvia.dto.response.BookResponse;
+import com.iqvia.error.error.BusinessErrorCodes;
+import com.iqvia.error.exception.BusinessRoleException;
 import com.iqvia.mapper.BookMapper;
 import com.iqvia.repository.BookRepository;
 import com.iqvia.service.BookService;
-import com.iqvia.util.WebUtil;
+import com.iqvia.util.WebUtils;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -37,7 +39,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Page<BookResponse> getAllBooks(Map<String, String> filters) {
 
-        return bookRepository.findAll(WebUtil.buildPageable(filters))
+        return bookRepository.findAll(WebUtils.buildPageable(filters))
                 .map(bookMapper::toResponse);
     }
 
@@ -56,7 +58,7 @@ public class BookServiceImpl implements BookService {
 
         if (!responseEntity.getStatusCode().is2xxSuccessful()) {
 
-            throw new RuntimeException("wrong request");
+            throw new BusinessRoleException(BusinessErrorCodes.CANT_CALL_INTERNAL_API);
         }
     }
 }

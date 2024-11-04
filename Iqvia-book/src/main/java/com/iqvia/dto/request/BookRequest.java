@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author: Abd-alrhman Alkraien.
@@ -15,6 +16,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookRequest {
 
@@ -25,6 +27,7 @@ public class BookRequest {
     @JsonProperty("category")
     @NotNull
     private Category bookCategory;
+
     @NotNull
     private Long authorId;
 }

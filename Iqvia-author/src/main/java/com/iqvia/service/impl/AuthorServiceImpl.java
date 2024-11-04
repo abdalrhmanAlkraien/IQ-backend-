@@ -2,11 +2,13 @@ package com.iqvia.service.impl;
 
 import com.iqvia.dto.request.AuthorRequest;
 import com.iqvia.dto.response.AuthorResponse;
+import com.iqvia.error.error.BusinessErrorCodes;
+import com.iqvia.error.exception.BusinessRoleException;
 import com.iqvia.mapper.AuthorMapper;
 import com.iqvia.model.Author;
 import com.iqvia.repository.AuthorRepository;
 import com.iqvia.service.AuthorService;
-import com.iqvia.util.WebUtil;
+import com.iqvia.util.WebUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -30,7 +32,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Page<AuthorResponse> getAllAuthor(Map<String, String> filters) {
 
-        return authorRepository.findAll(WebUtil.buildPageable(filters))
+        return authorRepository.findAll(WebUtils.buildPageable(filters))
                 .map(authorMapper::toDto);
     }
 
@@ -53,6 +55,6 @@ public class AuthorServiceImpl implements AuthorService {
     private Author getAuthorById(final Long authorId) {
 
         return authorRepository.findById(authorId)
-                .orElseThrow(()-> new RuntimeException("Author does not exist"));
+                .orElseThrow(()-> new BusinessRoleException(BusinessErrorCodes.NO_RECORD_FOUND));
     }
 }
