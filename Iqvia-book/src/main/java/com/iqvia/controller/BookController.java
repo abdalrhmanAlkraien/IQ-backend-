@@ -4,6 +4,7 @@ import com.iqvia.constant.EndPoints;
 import com.iqvia.dto.request.BookRequest;
 import com.iqvia.dto.response.BookResponse;
 import com.iqvia.service.BookService;
+import com.iqvia.util.GenericResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -34,21 +35,23 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping
-    public ResponseEntity<Page<BookResponse>> getAllAuthor(
+    public ResponseEntity<GenericResponse<Page<BookResponse>>> getAllAuthor(
             @RequestParam final Map<String, String> filters
     ) {
 
         log.info("call get all book API");
-        return ResponseEntity.ok(bookService.getAllBooks(filters));
+        return ResponseEntity.ok(GenericResponse.success(bookService.getAllBooks(filters)));
     }
 
     @PostMapping
-    public ResponseEntity<String> createNewAuthor(
+    public ResponseEntity<GenericResponse<String>> createNewAuthor(
             @RequestBody @Valid final BookRequest bookRequest
     ) throws URISyntaxException {
 
         log.info("call create new book API");
         bookService.createNewBook(bookRequest);
-        return ResponseEntity.created(new URI(EndPoints.BOOK_PATH)).body("Book has been created");
+        return ResponseEntity
+                .created(new URI(EndPoints.BOOK_PATH))
+                .body(GenericResponse.success("Book has been created"));
     }
 }

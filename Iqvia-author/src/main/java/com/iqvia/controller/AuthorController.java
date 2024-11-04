@@ -4,6 +4,7 @@ import com.iqvia.constant.EndPoints;
 import com.iqvia.dto.request.AuthorRequest;
 import com.iqvia.dto.response.AuthorResponse;
 import com.iqvia.service.AuthorService;
+import com.iqvia.util.GenericResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -36,29 +37,29 @@ public class AuthorController {
     private final AuthorService authorService;
 
     @GetMapping
-    public ResponseEntity<Page<AuthorResponse>> getAllAuthor(
+    public ResponseEntity<GenericResponse<Page<AuthorResponse>>> getAllAuthor(
             @RequestParam final Map<String, String> filters
     ) {
 
         log.info("call get all author API");
-        return ResponseEntity.ok(authorService.getAllAuthor(filters));
+        return ResponseEntity.ok(GenericResponse.success(authorService.getAllAuthor(filters)));
     }
 
     @PostMapping
-    public ResponseEntity<String> createNewAuthor(
+    public ResponseEntity<GenericResponse<String>> createNewAuthor(
             @RequestBody @Valid final AuthorRequest authorRequest
     ) throws URISyntaxException {
 
         log.info("call create new Author API");
         authorService.createAuthor(authorRequest);
-        return ResponseEntity.created(new URI(EndPoints.AUTHOR_PATH)).body("Author has been created");
+        return ResponseEntity.created(new URI(EndPoints.AUTHOR_PATH)).body(GenericResponse.success("Author has been created"));
     }
 
     @PutMapping(EndPoints.ID_KEY)
-    public ResponseEntity<String> updateNumberOfBook(
+    public ResponseEntity<GenericResponse<String>> updateNumberOfBook(
             @PathVariable("id") final Long authorId
     ) {
         authorService.updateNumberOfBook(authorId);
-        return ResponseEntity.ok("the Author has been updated");
+        return ResponseEntity.ok(GenericResponse.success("the Author has been updated"));
     }
 }
